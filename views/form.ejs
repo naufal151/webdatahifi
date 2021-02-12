@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container">
+<% if (user){ %>
+  <div class="alert alert-primary" role="alert">
+    Anda sudah mengisi form!
+  </div>
+<% } else { %>
+  <form action="/form" method="POST">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Nama Lengkap</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Lengkap" name="fullname">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Tempat, tanggal lahir</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tempat, tanggal lahir" name="birthinfo">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Tahun Masuk Fisika</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tahun masuk" name="enter">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Tahun Lulus Fisika</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tahun lulus" name="graduate">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Alamat Tinggal</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Alamat" name="address">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Kegiatan Sekarang</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Kegiatan" name="job">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<% } %>
+
+</div>
+
+<%- include('partials/footer') %>
