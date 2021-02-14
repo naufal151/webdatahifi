@@ -1,11 +1,7 @@
 <%- include('partials/header') %>
 
 <div class="container">
-<% if (user){ %>
-  <div class="alert alert-primary" role="alert">
-    Anda sudah mengisi form!
-  </div>
-<% } else { %>
+<% if (user.fullname == null){ %>
   <form action="/form" method="POST">
     <div class="form-group">
       <label for="exampleInputEmail1">Nama Lengkap</label>
@@ -33,6 +29,10 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+<% } else { %>
+  <div class="alert alert-primary" role="alert">
+    Anda sudah mengisi form!
+  </div>
 <% } %>
 
 </div>

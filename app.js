@@ -54,20 +54,23 @@ app.get('/signup', function(req, res){
 });
 
 app.get('/form', function(req, res){
-  User.find({"fullname": {$ne: null}}, function(err, foundUsers){
-    if (err){
-      console.log(err);
-    } else {
-      if (foundUsers) {
-        if(req.isAuthenticated()){
-          res.render("form", {user: foundUsers});
-        }
-        else{
-          res.redirect('/login');
-        }
+  if (req.isAuthenticated()){
+    User.findById(req.user.id, function(err, foundUser){
+      if(err){
+        console.log(err);
       }
-    }
-  });
+      else{
+        res.render('form', {user: foundUser});
+      }
+    });
+  }
+  else{
+    res.redirect('/login');
+  }
+});
+
+app.get('/forgot', function(req, res){
+  res.render('forgot');
 });
 
 app.post('/signup', function(req, res){
@@ -128,7 +131,30 @@ app.post('/form', function(req, res){
       }
     }
   });
-})
+});
+
+app.post('/forgot', function(req, res){
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findByUsername(username, function(err, foundUser){
+    if(err){
+      console.log(err);
+    }
+    else{
+      if(foundUser){
+        foundUser.setPassword(password, function(){
+          foundUser.save();
+          res.redirect('/login');
+        });
+      }
+      else{
+        res.redirect('/');
+      }
+    }
+  });
+});
+
 app.listen(2000, function(){
   console.log("2000 ready");
 });
