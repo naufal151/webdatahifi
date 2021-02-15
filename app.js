@@ -42,7 +42,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/', function(req, res){
-  res.render('home');
+  res.render('home', {loggedIn: req.isAuthenticated()});
 });
 
 app.get('/login', function(req, res){
@@ -71,6 +71,11 @@ app.get('/form', function(req, res){
 
 app.get('/forgot', function(req, res){
   res.render('forgot');
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 app.post('/signup', function(req, res){
