@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+
+<div class="container">
+  <table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nama lengkap</th>
+      <th scope="col">Tempat, tanggal lahir</th>
+      <th scope="col">Tahun masuk kuliah</th>
+      <th scope="col">Tahun lulus kuliah</th>
+      <th scope="col">Alamat tempat tinggal</th>
+      <th scope="col">Kegiatan sekarang</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% user.forEach(function(users){ %>
+      <tr>
+        <td><%=users.fullname%></td>
+        <td><%=users.birthinfo%></td>
+        <td><%=users.enter%></td>
+        <td><%=users.graduate%></td>
+        <td><%=users.address%></td>
+        <td><%=users.job%></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</div>
+
+<%- include('partials/footer') %>

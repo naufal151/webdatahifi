@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema({
   enter: String,
   graduate: String,
   address: String,
-  job: String
+  job: String,
+  role: String
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -76,6 +77,27 @@ app.get('/forgot', function(req, res){
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
+});
+
+app.get('/dbs', function(req, res){
+  if(req.isAuthenticated()){
+    if(req.user.role === "admin"){
+      User.find({"fullname": {$ne: null}}, function(err, foundUser){
+        if(err){
+          console.log(err);
+        }
+        else{
+          res.render('dbs', {user: foundUser});
+        }
+      });
+    }
+    else{
+      res.redirect('/');
+    }
+  }
+  else{
+    res.redirect('/login');
+  }
 });
 
 app.post('/signup', function(req, res){
