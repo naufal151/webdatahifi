@@ -43,7 +43,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.get('/', function(req, res){
-  res.render('home', {loggedIn: req.isAuthenticated()});
+  var role;
+  if(req.isAuthenticated()){
+    role = req.user.role;
+  }
+  res.render('home', {loggedIn: req.isAuthenticated(), user: role});
 });
 
 app.get('/login', function(req, res){
