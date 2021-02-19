@@ -5,4 +5,4 @@
 2. Fork repository ini dengan menklik tombol fork di kanan atas
 3. Kemudian clone repository ini yang ada di akun github anda dengan run `git clone https://github.com/<username>/webdatahifi.git` di command line atau dengan download zip
 4. Setelah meng-install NodeJs, run `npm install` di command line dalam directory repository ini untuk meng-install dependencies
-5. Kemudian dapat dicoba dengan browser dengan `localhost:2000`
+5. Kemudian dapat dicoba dengan run `node app.js` di command line, kemudian search di browser dengan `localhost:2000`
