@@ -1,0 +1,111 @@
+<%- include('partials/header') %>
+
+<div class="container" style="margin-top=50px;">
+  <div class="mt-10 sm:mt-0">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+      <h1>Perbarui Profil</h1>
+      <!-- <div class="md:col-span-1">
+        <div class="px-4 sm:px-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Isi data diri dengan benar dan lengkap.</h3>
+        </div>
+      </div> -->
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <form action="/profile" method="POST">
+          <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
+              <div class="grid grid-cols-6 gap-6">
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="first_name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                  <input type="text" value="<%=user.nama%>" autocomplete="off" name="nama" id="first_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                  <label for="last_name" class="block text-sm font-medium text-gray-700">NPM</label>
+                  <input type="text" value="<%=user.npm%>" autocomplete="off" name="npm" id="last_name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
+                  <label for="email_address" class="block text-sm font-medium text-gray-700">Tempat Lahir</label>
+                  <input type="text" value="<%=user.ttl%>" autocomplete="off" name="ttl" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
+                  <label for="email_address" class="block text-sm font-medium text-gray-700">Tanggal Lahir</label>
+                  <input type="date" value="<%=user.tgl%>" autocomplete="off" name="tgl" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-4">
+                  <label for="email_address" class="block text-sm font-medium text-gray-700">Agama</label>
+                  <input type="text" value="<%=user.agama%>" autocomplete="off" name="agama" id="email_address" autocomplete="email" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                  <label for="city" class="block text-sm font-medium text-gray-700">Golongan Darah</label>
+                  <input type="text" value="<%=user.goldar%>" autocomplete="off" name="goldar" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                  <label for="city" class="block text-sm font-medium text-gray-700">Np. Handphone</label>
+                  <input type="text" value="<%=user.hp%>" autocomplete="off" name="hp" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                  <label for="city" class="block text-sm font-medium text-gray-700">Email</label>
+                  <input type="email" value="<%=user.email%>" autocomplete="off" name="email" id="city" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Alamat Rumah</label>
+                  <input type="text" value="<%=user.rumah%>" autocomplete="off" name="rumah" id="street_address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Alamat Kos</label>
+                  <input type="text" value="<%=user.kos%>" autocomplete="off" name="kos" id="street_address" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Riwayat Pendidikan</label>
+                  <textarea name="pendidikan" rows="8" cols="80" value="<%=user.pendidikan%>"></textarea>
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Riwayat Kepanitiaan</label>
+                  <textarea name="panitia" rows="8" cols="80" value="<%=user.panitia%>"></textarea>
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Riwayat Keorganisasian</label>
+                  <textarea name="organisasi" rows="8" cols="80" value="<%=user.organisasi%>" ></textarea>
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Daftar Pelatihan</label>
+                  <textarea name="pelatihan" rows="8" cols="80" value="<%=user.pelatihan%>"></textarea>
+                </div>
+
+                <div class="col-span-6">
+                  <label for="street_address" class="block text-sm font-medium text-gray-700">Daftar Prestasi</label>
+                  <textarea name="prestasi" rows="8" cols="80" value="<%=user.prestasi%>"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+              <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden sm:block" aria-hidden="true">
+    <div class="py-5">
+      <div class="border-t border-gray-200"></div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

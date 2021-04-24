@@ -1,39 +1,52 @@
 <%- include('partials/header') %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">HIFI</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <% if(loggedIn){ %>
-          <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
-        <% } else{ %>
-          <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
-        <% } %>
-      </li>
+<header class="text-gray-600 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <img src="img/Logo HIFI - SVG.svg" alt="logo-hifi" style="height: 55px;">
+      <span class="ml-3 text-xl">Himpunan Fisika</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <% if(loggedIn){ %>
         <% if(user === "admin"){ %>
-          <li class="nav-item">
-            <a class="nav-link" href="/dbs">Database</a>
-          </li>
+          <a class="mr-5 hover:text-gray-900" href="/dbs">Database</a>
         <% } %>
       <% } %>
-    </ul>
+    </nav>
+    <% if(loggedIn){ %>
+      <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="/logout">Logout</a>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    <% } else{ %>
+      <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"><a href="/login">Login</a>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    <% } %>
   </div>
-</nav>
-<div class="container">
-  <div class="jumbotron">
-    <h1 class="display-4">Database HIFI FMIPA Unpad</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="/form" role="button">Isi database</a>
-    </p>
+</header>
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Database Himpunan Fisika FMIPA Unpad
+        <br class="hidden lg:inline-block">Kabinet Gemini 2021
+      </h1>
+      <p class="mb-8 leading-relaxed">Pengumpulan database dilakukan untuk menyimpan profil-profil dari warga himpunan yang akan berguna nantinya.</p>
+      <div class="flex justify-center">
+        <% if(nama == null){ %>
+          <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"><a href="/form">Isi Database</a></button>
+        <% } else{ %>
+          <button class="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"><a href="/profile">Update Profil</a></button>
+        <% } %>
+      </div>
+    </div>
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+      <img class="object-cover object-center rounded" alt="kabinet-gemini" src="img/Gemini wo Text.png" style="height: 520px;">
+    </div>
   </div>
-</div>
+</section>
 
 <%- include('partials/footer') %>

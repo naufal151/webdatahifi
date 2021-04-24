@@ -9,6 +9,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static('public'));
 
 app.use(session({
   secret: "hOIDHAdajo#jdoa4)1*dna./aw.",
@@ -19,18 +20,27 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://localhost:27017/datahifi', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/hifidb', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  fullname: String,
-  birthinfo: String,
-  enter: String,
-  graduate: String,
-  address: String,
-  job: String,
+  nama: String,
+  npm: Number,
+  ttl: String,
+  tgl: Date,
+  agama: String,
+  hp: String,
+  goldar: String,
+  email: String,
+  rumah: String,
+  kos: String,
+  pend: String,
+  panitia: String,
+  organisasi: String,
+  pelatihan: String,
+  prestasi: String,
   role: String
 });
 
@@ -44,10 +54,12 @@ passport.deserializeUser(User.deserializeUser());
 
 app.get('/', function(req, res){
   var role;
+  var nama;
   if(req.isAuthenticated()){
     role = req.user.role;
+    nama = req.user.nama;
   }
-  res.render('home', {loggedIn: req.isAuthenticated(), user: role});
+  res.render('home', {loggedIn: req.isAuthenticated(), user: role, nama: nama});
 });
 
 app.get('/login', function(req, res){
@@ -86,7 +98,7 @@ app.get('/logout', function(req, res){
 app.get('/dbs', function(req, res){
   if(req.isAuthenticated()){
     if(req.user.role === "admin"){
-      User.find({"fullname": {$ne: null}}, function(err, foundUser){
+      User.find({"nama": {$ne: null}}, function(err, foundUser){
         if(err){
           console.log(err);
         }
@@ -104,6 +116,21 @@ app.get('/dbs', function(req, res){
   }
 });
 
+app.get('/profile', function(req, res){
+  if(req.isAuthenticated()){
+    var user = req.user
+    if(req.user.nama !== null){
+      res.render('profile', {user: user});
+    }
+    else{
+      res.redirect('/');
+    }
+  }
+  else{
+    res.redirect('login');
+  }
+});
+
 app.post('/signup', function(req, res){
   User.register({username: req.body.username}, req.body.password, function(err, user){
     if(err){
@@ -111,7 +138,7 @@ app.post('/signup', function(req, res){
       res.redirect('/signup');
     }
     else{
-      passport.authenticate('local')(req, res, function(){
+      passport.authenticate('local', {failureFlash: true, failureRedirect: '/signup'})(req, res, function(){
         res.redirect('/');
       });
     }
@@ -130,32 +157,50 @@ app.post('/login', function(req, res){
       res.redirect('/login');
     }
     else{
-      passport.authenticate('local')(req, res, function(){
-        res.redirect('/form');
+      passport.authenticate('local', {failureRedirect: '/login'})(req, res, function(){
+        res.redirect('/');
       });
     }
   });
 });
 
 app.post('/form', function(req, res){
-  const fullname = req.body.fullname;
-  const birthinfo = req.body.birthinfo;
-  const enter = req.body.enter;
-  const graduate = req.body.graduate;
-  const address = req.body.address;
-  const job = req.body.job;
+  const nama = req.body.nama;
+  const npm = req.body.npm;
+  const ttl = req.body.ttl;
+  const tgl = req.body.tgl;
+  const agama = req.body.agama;
+  const goldar = req.body.goldar;
+  const hp = req.body.hp;
+  const email = req.body.email;
+  const rumah = req.body.rumah;
+  const kos = req.body.kos;
+  const pendidikan = req.body.pendidikan;
+  const panitia = req.body.panitia;
+  const organisasi = req.body.organisasi;
+  const pelatihan = req.body.pelatihan;
+  const prestasi = req.body.prestasi;
 
   User.findById(req.user.id, function(err, foundUser){
     if (err) {
       console.log(err);
     } else {
       if (foundUser) {
-        foundUser.fullname = fullname;
-        foundUser.birthinfo = birthinfo;
-        foundUser.enter = enter;
-        foundUser.graduate = graduate;
-        foundUser.address = address;
-        foundUser.job = job;
+        foundUser.nama = nama;
+        foundUser.npm = npm;
+        foundUser.ttl = ttl;
+        foundUser.tgl = tgl;
+        foundUser.agama = agama;
+        foundUser.goldar = goldar;
+        foundUser.hp = hp;
+        foundUser.email = email;
+        foundUser.rumah = rumah;
+        foundUser.kos = kos;
+        foundUser.pendidikan = pendidikan;
+        foundUser.panitia = panitia;
+        foundUser.organisasi = organisasi;
+        foundUser.pelatihan = pelatihan;
+        foundUser.prestasi = prestasi;
         foundUser.save(function(){
           res.redirect("/");
         });
@@ -180,12 +225,58 @@ app.post('/forgot', function(req, res){
         });
       }
       else{
+        alert('User tidak ditemukan.');
         res.redirect('/');
       }
     }
   });
 });
 
-app.listen(2000, function(){
+app.post('/profile', function(req, res){
+  const namaBaru = req.body.nama;
+  const npmBaru = req.body.npm;
+  const ttlBaru = req.body.ttl;
+  const tglBaru = req.body.tgl;
+  const agamaBaru = req.body.agama;
+  const goldarBaru = req.body.goldar;
+  const hpBaru = req.body.hp;
+  const emailBaru = req.body.email;
+  const rumahBaru = req.body.rumah;
+  const kosBaru = req.body.kos;
+  const pendidikanBaru = req.body.pendidikan;
+  const panitiaBaru = req.body.panitia;
+  const organisasiBaru = req.body.organisasi;
+  const pelatihanBaru = req.body.pelatihan;
+  const prestasiBaru = req.body.prestasi;
+
+  User.findById(req.user.id, function(err, foundUser){
+    if (err) {
+      console.log(err);
+    } else {
+      if (foundUser) {
+        foundUser.nama = namaBaru;
+        foundUser.npm = npmBaru;
+        foundUser.ttl = ttlBaru;
+        foundUser.tgl = tglBaru;
+        foundUser.agama = agamaBaru;
+        foundUser.goldar = goldarBaru;
+        foundUser.hp = hpBaru;
+        foundUser.email = emailBaru;
+        foundUser.rumah = rumahBaru;
+        foundUser.kos = kosBaru;
+        foundUser.pendidikan = pendidikanBaru;
+        foundUser.panitia = panitiaBaru;
+        foundUser.organisasi = organisasiBaru;
+        foundUser.pelatihan = pelatihanBaru;
+        foundUser.prestasi = prestasiBaru;
+        foundUser.save(function(){
+          res.redirect("/");
+        });
+      }
+    }
+  });
+});
+
+app.listen(process.env.port || 2000, function(){
   console.log("2000 ready");
 });
