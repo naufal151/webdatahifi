@@ -277,6 +277,6 @@ app.post('/profile', function(req, res){
   });
 });
 
-app.listen(process.env.port || 2000, function(){
+app.listen(process.env.PORT || 2000, function(){
   console.log("2000 ready");
 });
