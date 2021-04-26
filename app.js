@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
@@ -12,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.use(session({
-  secret: "hOIDHAdajo#jdoa4)1*dna./aw.",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }));
@@ -20,7 +21,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://localhost:27017/hifidb', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@datahifi.80cpd.mongodb.net/hifidb', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema({
