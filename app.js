@@ -12,7 +12,9 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
+const MongoStore = require('connect-mongo');
 app.use(session({
+  store: MongoStore.create({mongoUrl: process.env.DATABASE_URL}),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
@@ -21,7 +23,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@datahifi.80cpd.mongodb.net/hifidb', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set("useCreateIndex", true);
 
 const userSchema = new mongoose.Schema({
