@@ -126,24 +126,30 @@
        </div>
     </div> 
   </div>
-  <div class="flex bg-blue-200 p-4">
-    <div class="mr-4">
-       <div class="h-10 w-10 text-white bg-blue-600 rounded-full flex justify-center items-center">
-     <i class="material-icons">info</i>
-       </div>
-     </div>
-   <div class="flex justify-between w-full">
-       <div class="text-blue-600">
-       <p class="mb-2 font-bold">
-         Anda sudah mengisi form!
-       </p>
-        </div>
-      <div class="text-sm text-gray-500">
-        <p>x</p>
-         </div>
+  <div class="hidden sm:block" aria-hidden="true">
+    <div class="py-5">
+      <div class="border-t border-gray-200"></div>
+      </div>
+    </div>
    </div>
-</div>
-
-<% } %>
+  <% } else{ %>
+    <div class="flex bg-blue-200 p-4">
+         <div class="mr-4">
+            <div class="h-10 w-10 text-white bg-blue-600 rounded-full flex justify-center items-center">
+          <i class="material-icons">info</i>
+            </div>
+          </div>
+        <div class="flex justify-between w-full">
+            <div class="text-blue-600">
+            <p class="mb-2 font-bold">
+              Anda sudah mengisi form!
+            </p>
+             </div>
+           <div class="text-sm text-gray-500">
+             <p>x</p>
+              </div>
+        </div>
+    </div>
+    <% } %>
 
 <%- include('partials/footer') %>
