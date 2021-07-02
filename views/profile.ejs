@@ -16,31 +16,31 @@
                 <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                   <div class="mb-3 space-y-2 w-full text-xs">
                     <label class="font-semibold text-base text-gray-800 py-2">Nama Lengkap </label>
-                    <input type="text" autocomplete="off" name="nama" id="first_name" placeholder="Nama lengkap" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
+                    <input type="text" autocomplete="off" value="<%=user.nama%>" name="nama" id="first_name" placeholder="Nama lengkap" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
                   </div>
                   <div class="mb-3 space-y-2 w-full text-xs">
                     <label class="font-semibold text-base text-gray-800 py-2">NPM </label>
-                    <input type="text" autocomplete="off" name="npm" id="last_name" placeholder="140310-" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
+                    <input type="text" autocomplete="off" value="<%=user.npm%>" name="npm" id="last_name" placeholder="140310-" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
                     </div>
                  </div>
                 <div class="mb-3 space-y-2 w-full text-xs">
                   <label class=" font-semibold text-base text-gray-800 py-2">Tempat Lahir</label>
                   <div class="flex flex-wrap items-stretch w-full mb-4 relative">
                     
-                    <input autocomplete="off" name="ttl" type="text" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Kota,Provinsi,Negara">
+                    <input autocomplete="off" value="<%=user.ttl%>" name="ttl" type="text" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Kota,Provinsi,Negara">
                             </div>
                   </div>
                 <div class="mb-3 space-y-2 w-full text-xs">
                     <label class=" font-semibold text-base text-gray-800 py-2">Tanggal Lahir</label>
                     <div class="flex flex-wrap items-stretch w-full mb-4 relative">
                       
-                      <input type="date" autocomplete="off" name="tgl" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow">
+                      <input type="date" autocomplete="off" value="<%=user.tgl%>" name="tgl" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow">
                     </div>
                 </div>
                   <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
                     <div class="w-full flex flex-col mb-3">
                       <label class="font-semibold text-base text-gray-800 py-2">Agama</label>
-                      <select name="agama" id="email_address" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
+                      <select value="<%=user.agama%>" name="agama" id="email_address" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
                         <option value="">Pilih Agama</option>
                        <option value="">Islam</option>
                         <option value="">Kristen</option>
@@ -53,7 +53,7 @@
                     </div>
                       <div class="w-full flex flex-col mb-3">
                         <label class="font-semibold text-base text-gray-800 py-2">Golongan Darah</label>
-                        <select name="goldar" id="city" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
+                        <select value="<%=user.goldar%>" name="goldar" id="city" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
                                   <option value="">Pilih Golongan Darah</option>
                                  <option value="">A</option>
                                   <option value="">B</option>
@@ -66,12 +66,12 @@
                     <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                       <div class="mb-3 space-y-2 w-full text-xs">
                         <label class="font-semibold text-base text-gray-800 py-2">Nomor Handphone </label>
-                        <input autocomplete="off" name="hp" id="city" placeholder="+62" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
+                        <input value="<%=user.hp%>" autocomplete="off" name="hp" id="city" placeholder="+62" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
                         
                       </div>
                       <div class="mb-3 space-y-2 w-full text-xs">
                         <label class="font-semibold text-base text-gray-800 py-2">Email </label>
-                        <input autocomplete="off" name="email" id="city" placeholder="emailadress@mail.com" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
+                        <input value="<%=user.email%>" autocomplete="off" name="email" id="city" placeholder="emailadress@mail.com" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
                         
                       </div>
                     
@@ -81,39 +81,39 @@
                       <label class=" font-semibold text-base text-gray-800 py-2">Alamat Rumah</label>
                       <div class="flex flex-wrap items-stretch w-full mb-4 relative">
                         
-                        <input autocomplete="off" name="rumah" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
+                        <input autocomplete="off" value="<%=user.rumah%>" name="rumah" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
                         </div>
                       </div>
                     <div class="mb-3 space-y-2 w-full text-xs">
                       <label class=" font-semibold text-base text-gray-800 py-2">Alamat Kos</label>
                       <div class="flex flex-wrap items-stretch w-full mb-4 relative">
                           
-                        <input autocomplete="off" name="kos" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
+                        <input autocomplete="off" value="<%=user.kos%>" name="kos" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
                         </div>
                       </div>
                     <div class="flex-auto w-full mb-1 text-xs space-y-2">
                         <label class="font-semibold text-base text-gray-800 py-2">Riwayat Pendidikan</label>
-                        <textarea name="pendidikan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder=" [Jenjang sekolah (e.g. SD/SMP/SMA)] - [Nama Sekolah] - [Tahun masuk-Tahun lulus (e.g. 2007-2012)]" spellcheck="false"></textarea>
+                        <textarea value="<%=user.pendidikan%>" name="pendidikan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder=" [Jenjang sekolah (e.g. SD/SMP/SMA)] - [Nama Sekolah] - [Tahun masuk-Tahun lulus (e.g. 2007-2012)]" spellcheck="false"></textarea>
                         
                       </div>
                     <div class="flex-auto w-full mb-1 text-xs space-y-2">
                         <label class="font-semibold text-base text-gray-800 py-2">Riwayat Kepanitiaan</label>
-                        <textarea name="panitia" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Kepanitiaan] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
+                        <textarea value="<%=user.panitia%>" name="panitia" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Kepanitiaan] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
                         
                       </div>
                     <div class="flex-auto w-full mb-1 text-xs space-y-2">
                         <label class="font-semibold text-base text-gray-800 py-2">Riwayat Keorganisasian</label>
-                        <textarea name="organisasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Organisasi] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
+                        <textarea value="<%=user.organisasi%>" name="organisasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Organisasi] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
                         
                       </div>
                       <div class="flex-auto w-full mb-1 text-xs space-y-2">
                         <label class="font-semibold text-base text-gray-800 py-2">Daftar Pelatihan</label>
-                        <textarea name="pelatihan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama pelatihan] - [Penyelenggara] - [Tahun]" spellcheck="false"></textarea>
+                        <textarea value="<%=user.pelatihan%>" name="pelatihan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama pelatihan] - [Penyelenggara] - [Tahun]" spellcheck="false"></textarea>
                         
                       </div>
                       <div class="flex-auto w-full mb-1 text-xs space-y-2">
                         <label class="font-semibold text-base text-gray-800 py-2">Daftar Prestasi</label>
-                        <textarea name="prestasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama lomba/kejuaraan/lainnya] - [Titel juara (e.g. Juara 1 ON MIPA tingkat Provinsi)] - [Tahun]" spellcheck="false"></textarea>
+                        <textarea value="<%=user.prestasi%>" name="prestasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama lomba/kejuaraan/lainnya] - [Titel juara (e.g. Juara 1 ON MIPA tingkat Provinsi)] - [Tahun]" spellcheck="false"></textarea>
                         
                       
                       <button type="back" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-800 hover:shadow-lg hover:bg-gray-100 rounded-md"> Kembali </button>
