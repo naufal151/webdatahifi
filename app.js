@@ -6,11 +6,13 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const passportLocalMongoose = require('passport-local-mongoose');
 const session = require('express-session');
+const flash = require('connect-flash');
 const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(flash());
 
 const MongoStore = require('connect-mongo');
 app.use(session({
@@ -66,7 +68,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/login', function(req, res){
-  res.render('login');
+  res.render('login', {message: req.flash('error')});
 });
 
 app.get('/signup', function(req, res){
@@ -160,7 +162,7 @@ app.post('/login', function(req, res){
       res.redirect('/login');
     }
     else{
-      passport.authenticate('local', {failureRedirect: '/login'})(req, res, function(){
+      passport.authenticate('local', {failureRedirect: '/login', failureFlash: true})(req, res, function(){
         res.redirect('/');
       });
     }
