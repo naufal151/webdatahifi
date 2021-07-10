@@ -1,154 +1,170 @@
 <%- include('partials/header') %>
 
-<% if(user.nama == null){ %>
-  <div class="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
-  style="background-image: url(https://source.unsplash.com/IXUM4cJynP0);">
-   <div class="max-w-3xl w-full space-y-8 p-8 bg-white rounded-xl shadow-lg z-10">
-    <div >
-      <div class="flex flex-col ">
+  <% if(user.nama==null){ %>
+    <div
+    class="relative min-h-screen flex items-center justify-center bg-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 bg-gray-500 bg-no-repeat bg-cover relative items-center"
+    style="background-image: url(https://source.unsplash.com/IXUM4cJynP0);">
+    <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+    <div class="w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
+      <div class="grid  gap-8 grid-cols-1">
+        <div class="flex flex-col ">
           <div class="flex flex-col sm:flex-row items-center">
-            <h1 class="font-bold text-2xl mr-auto">Isi Profil</h1>
-            <div class="w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-            </div>
+            <h2 class="font-semibold text-lg mr-auto">Perbarui Profil</h2>
+            <div class="w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0"></div>
           </div>
-          <div class="mt-5">
-            <form action="/form" method="POST">
-            <div class="form">
+          <form action="/profile" method="post">
+            <div class="mt-5">
+              <div class="form">
                 <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                   <div class="mb-3 space-y-2 w-full text-xs">
-                    <label class="font-semibold text-base text-gray-800 py-2">Nama Lengkap </label>
-                    <input type="text" autocomplete="off" name="nama" id="first_name" placeholder="Nama lengkap" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
+                    <label class="font-semibold text-gray-600 py-2">Nama Lengkap</label>
+                    <input placeholder="Nama Lengkap"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="nama" id="integration_shop_name">
+                    <p class="text-red text-xs hidden">Please fill out this field.</p>
                   </div>
                   <div class="mb-3 space-y-2 w-full text-xs">
-                    <label class="font-semibold text-base text-gray-800 py-2">NPM </label>
-                    <input type="text" autocomplete="off" name="npm" id="last_name" placeholder="140310-" class="appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
-                    </div>
-                 </div>
-                <div class="mb-3 space-y-2 w-full text-xs">
-                  <label class=" font-semibold text-base text-gray-800 py-2">Tempat Lahir</label>
-                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
-                    
-                    <input autocomplete="off" name="ttl" type="text" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Kota,Provinsi,Negara">
-                            </div>
+                    <label class="font-semibold text-gray-600 py-2">NPM</label>
+                    <input placeholder="140310XXXXXX"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="npm" id="integration_shop_name">
+                    <p class="text-red text-xs hidden">Please fill out this field.</p>
                   </div>
-                <div class="mb-3 space-y-2 w-full text-xs">
-                    <label class=" font-semibold text-base text-gray-800 py-2">Tanggal Lahir</label>
-                    <div class="flex flex-wrap items-stretch w-full mb-4 relative">
-                      
-                      <input type="date" autocomplete="off" name="tgl" id="email_address" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow">
-                    </div>
                 </div>
-                  <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
-                    <div class="w-full flex flex-col mb-3">
-                      <label class="font-semibold text-base text-gray-800 py-2">Agama</label>
-                      <select name="agama" id="email_address" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
-                        <option value="">Pilih Agama</option>
-                       <option value="">Islam</option>
-                        <option value="">Kristen</option>
-                        <option value="">Katolik</option>
-                       <option value="">Budha</option>
-                       <option value="">Hindu</option>
-                       <option value="">Konghucu</option>
-                        </select>
-                      
-                    </div>
-                      <div class="w-full flex flex-col mb-3">
-                        <label class="font-semibold text-base text-gray-800 py-2">Golongan Darah</label>
-                        <select name="goldar" id="city" class="text-sm block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " required="required" name="integration[city_id]" id="integration_city_id">
-                                  <option value="">Pilih Golongan Darah</option>
-                                 <option value="">A</option>
-                                  <option value="">B</option>
-                                 <option value="">O</option>
-                         <option value="">AB</option>
-                                  </select>
-                        
-                      </div>
-                    </div>
-                    <div class="md:flex flex-row md:space-x-4 w-full text-xs">
-                      <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-base text-gray-800 py-2">Nomor Handphone </label>
-                        <input autocomplete="off" name="hp" id="city" placeholder="+62" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
-                        
-                      </div>
-                      <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-base text-gray-800 py-2">Email </label>
-                        <input autocomplete="off" name="email" id="city" placeholder="emailadress@mail.com" class="text-sm appearance-none block w-full bg-grey-lighter text-sm text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" >
-                        
-                      </div>
-                    
-                    </div>
-    
-                    <div class="mb-3 space-y-2 w-full text-xs">
-                      <label class=" font-semibold text-base text-gray-800 py-2">Alamat Rumah</label>
-                      <div class="flex flex-wrap items-stretch w-full mb-4 relative">
-                        
-                        <input autocomplete="off" name="rumah" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
-                        </div>
-                      </div>
-                    <div class="mb-3 space-y-2 w-full text-xs">
-                      <label class=" font-semibold text-base text-gray-800 py-2">Alamat Kos</label>
-                      <div class="flex flex-wrap items-stretch w-full mb-4 relative">
-                          
-                        <input autocomplete="off" name="kos" id="street_address" type="text" class="text-sm flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" placeholder="Jalan,RT,RW,Kecamatan,Kota,Provinsi">
-                        </div>
-                      </div>
-                    <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                        <label class="font-semibold text-base text-gray-800 py-2">Riwayat Pendidikan</label>
-                        <textarea name="pendidikan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder=" [Jenjang sekolah (e.g. SD/SMP/SMA)] - [Nama Sekolah] - [Tahun masuk-Tahun lulus (e.g. 2007-2012)]" spellcheck="false"></textarea>
-                        
-                      </div>
-                    <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                        <label class="font-semibold text-base text-gray-800 py-2">Riwayat Kepanitiaan</label>
-                        <textarea name="panitia" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Kepanitiaan] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
-                        
-                      </div>
-                    <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                        <label class="font-semibold text-base text-gray-800 py-2">Riwayat Keorganisasian</label>
-                        <textarea name="organisasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama Organisasi] - [Jabatan] - [Tahun]" spellcheck="false"></textarea>
-                        
-                      </div>
-                      <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                        <label class="font-semibold text-base text-gray-800 py-2">Daftar Pelatihan</label>
-                        <textarea name="pelatihan" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama pelatihan] - [Penyelenggara] - [Tahun]" spellcheck="false"></textarea>
-                        
-                      </div>
-                      <div class="flex-auto w-full mb-1 text-xs space-y-2">
-                        <label class="font-semibold text-base text-gray-800 py-2">Daftar Prestasi</label>
-                        <textarea name="prestasi" required="" name="message" id="" class="w-full text-sm min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="[Nama lomba/kejuaraan/lainnya] - [Titel juara (e.g. Juara 1 ON MIPA tingkat Provinsi)] - [Tahun]" spellcheck="false"></textarea>
-                        
-                      
-                      <button type="back" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-800 hover:shadow-lg hover:bg-gray-100 rounded-md"> Kembali </button>
-                      <button type="submit" class="mb-2 md:mb-0 bg-blue-700 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white hover:shadow-lg hover:bg-blue-900 rounded-md"> Simpan </button>
-                    </div>
-                  </form>
+                <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Tempat Lahir</label>
+                    <input placeholder="Tempat Lahir"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="ttl" id="integration_street_address">
+                  </div>
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Tanggal Lahir</label>
+                    <input placeholder="Tanggal Lahir"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="date" name="tgl" id="integration_street_address">
+                    <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                  </div>
+                </div>
+                <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Agama</label>
+                    <select name="agama" id="">
+                      <option value="">Pilih salah satu</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Kristen">Kristen</option>
+                      <option value="Katolik">Katolik</option>
+                      <option value="Budha">Budha</option>
+                      <option value="Hindu">Hindu</option>
+                      <option value="Konghucu">Konghucu</option>
+                    </select>
+                  </div>
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Golongan Darah</label>
+                    <select name="goldar" id="">
+                      <option value="">Pilih Golongan Darah</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="O">O</option>
+                      <option value="AB">AB</option>
+                    </select>
+                    <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                  </div>
+                </div>
+                <div class="md:flex md:flex-row md:space-x-4 w-full text-xs">
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Nomor Handphone</label>
+                    <input placeholder="+62..."
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="hp" id="integration_street_address">
+                  </div>
+                  <div class="w-full flex flex-col mb-3">
+                    <label class="font-semibold text-gray-600 py-2">Email</label>
+                    <input placeholder="youremail@mail.com"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="email" id="integration_street_address">
+                    <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
+                  </div>
+                </div>
+                <div class="mb-3 space-y-2 w-full text-xs">
+                  <label class=" font-semibold text-gray-600 py-2">Alamat Rumah</label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <input type="text"
+                      class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow"
+                      placeholder="Alamat Rumah" name="rumah">
+                  </div>
+                </div>
+                <div class="mb-3 space-y-2 w-full text-xs">
+                  <label class=" font-semibold text-gray-600 py-2">Alamat Kos</label>
+                  <div class="flex flex-wrap items-stretch w-full mb-4 relative">
+                    <input type="text"
+                      class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow"
+                      placeholder="Alamat Kos" name="kos">
+                  </div>
+                </div>
+                <div class="flex-auto w-full mb-1 text-xs space-y-2">
+                  <label class="font-semibold text-gray-600 py-2">Riwayat Pendidikan</label>
+                  <textarea name="pendidikan" id=""
+                    class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
+                    placeholder="[Jenjang sekolah] - [Nama sekolah] - [Tahun masuk] - [Tahun lulus] // e.g. SD - SDN 01 Bandung - 2005 - 2011" spellcheck="false"></textarea>
+                </div>
+                <div class="flex-auto w-full mb-1 text-xs space-y-2">
+                  <label class="font-semibold text-gray-600 py-2">Daftar Kepanitiaan Terbaru (September 2020 - Sekarang)</label>
+                  <textarea name="panitia" id=""
+                    class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
+                    placeholder="[Tahun diselenggarakan] - [Nama kepanitiaan] - [Jabatan] // e.g. 2020 - Dies Natalis HIFI 2020 - Staf Divisi Acara" spellcheck="false"></textarea>
+                </div>
+                <div class="flex-auto w-full mb-1 text-xs space-y-2">
+                  <label class="font-semibold text-gray-600 py-2">Daftar Keorganisasian Terbaru (September 2020 - Sekarang)</label>
+                  <textarea name="organisasi" id=""
+                    class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
+                    placeholder="[Tahun menjabat] - [Nama organisasi] - [Jabatan] // e.g. 2021 - HIFI - Staf departemen kaderisasi" spellcheck="false"></textarea>
+                </div>
+                <div class="flex-auto w-full mb-1 text-xs space-y-2">
+                  <label class="font-semibold text-gray-600 py-2">Daftar Pelatihan Terbaru (September 2020 - Sekarang)</label>
+                  <textarea name="pelatihan" id=""
+                    class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
+                    placeholder="[Tahun diselenggarakan] - [Nama pelatihan] - [tingkat] // e.g. 2020 - LKMM - Universitas (jurusan)" spellcheck="false"></textarea>
+                </div>
+                <div class="flex-auto w-full mb-1 text-xs space-y-2">
+                  <label class="font-semibold text-gray-600 py-2">Daftar Prestasi Terbaru (September 2020 - Sekarang)</label>
+                  <textarea name="prestasi" id=""
+                    class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4"
+                    placeholder="[Tahun diselenggarakan] - [Predikat] - [Nama kegiatan] - [Tingkat] // e.g. 2020 - Juara 1 - Putri MIPA - Universitas (fakultas)" spellcheck="false"></textarea>
+                </div>
+                <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
+                  <button
+                    class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+                    type="back">
+                    Cancel </button>
+                  <button
+                    class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500"
+                    type="submit">Save</button>
+                </div>
+              </div>
             </div>
-       </div>
-    </div> 
-  </div>
-  <div class="hidden sm:block" aria-hidden="true">
-    <div class="py-5">
-      <div class="border-t border-gray-200"></div>
+          </form>
+        </div>
       </div>
     </div>
-   </div>
-  <% } else{ %>
-    <div class="flex bg-blue-200 p-4">
+    <% } else{ %>
+      <div class="flex bg-blue-200 p-4">
         <div class="mr-4">
-            <div class="h-10 w-10 text-white bg-blue-600 rounded-full flex justify-center items-center">
-          <i class="material-icons">info</i>
-            </div>
+          <div class="h-10 w-10 text-white bg-blue-600 rounded-full flex justify-center items-center">
+            <i class="material-icons">info</i>
           </div>
+        </div>
         <div class="flex justify-between w-full">
-            <div class="text-blue-600">
+          <div class="text-blue-600">
             <p class="mb-2 font-bold">
               Anda sudah mengisi form!
             </p>
-             </div>
-           <div class="text-sm text-gray-500">
-             <p>x</p>
-              </div>
+          </div>
+          <div class="text-sm text-gray-500">
+            <p>x</p>
+          </div>
         </div>
-     </div>
-    <% } %>
+      </div>
+      <% } %>
 
-<%- include('partials/footer') %>
+        <%- include('partials/footer') %>

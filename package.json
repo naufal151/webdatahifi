@@ -4,7 +4,8 @@
   "description": "Web Database HIFI Unpad",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Naufal Ardian",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "mongoose": "^5.12.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.1.0"
+    "passport-local-mongoose": "^6.1.0",
+    "tailwindcss": "^2.2.4"
   }
 }
