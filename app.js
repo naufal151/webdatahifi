@@ -121,6 +121,20 @@ app.get('/dbs', function(req, res){
   }
 });
 
+app.post('/dbs', function(req, res){
+  if (req.isAuthenticated() && req.user.role === 'admin'){
+    const npm = req.body.search;
+    User.find({'npm': npm}, function(err, foundUser){
+      if (err){
+        console.log(err);
+      }
+      else {
+        res.render('dbs', {user: foundUser});
+      }
+    })
+  }
+})
+
 app.get('/profile', function(req, res){
   if(req.isAuthenticated()){
     var user = req.user
