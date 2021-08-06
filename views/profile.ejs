@@ -16,6 +16,13 @@
               <div class="form">
                 <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                   <div class="mb-3 space-y-2 w-full text-xs">
+                    <label class="font-semibold text-gray-600 py-2">Ganti Username</label>
+                    <input placeholder="Nama Lengkap"
+                      class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"
+                      type="text" name="username" id="integration_shop_name" value="<%= user.username %>">
+                    <p class="text-red text-xs hidden">Please fill out this field.</p>
+                  </div>
+                  <div class="mb-3 space-y-2 w-full text-xs">
                     <label class="font-semibold text-gray-600 py-2">Nama Lengkap</label>
                     <input placeholder="Nama Lengkap"
                       class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4"

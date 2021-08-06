@@ -252,6 +252,7 @@ app.post('/forgot', function(req, res){
 });
 
 app.post('/profile', function(req, res){
+  const unameBaru = req.body.username;
   const namaBaru = req.body.nama;
   const npmBaru = req.body.npm;
   const ttlBaru = req.body.ttl;
@@ -273,6 +274,7 @@ app.post('/profile', function(req, res){
       console.log(err);
     } else {
       if (foundUser) {
+        foundUser.username = unameBaru;
         foundUser.nama = namaBaru;
         foundUser.npm = npmBaru;
         foundUser.ttl = ttlBaru;
