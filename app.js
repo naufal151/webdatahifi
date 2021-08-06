@@ -139,7 +139,7 @@ app.get('/profile', function(req, res){
   if(req.isAuthenticated()){
     var user = req.user
     if(req.user.nama !== null){
-      res.render('profile', {user: user});
+      res.render('profile', {user: user, message: req.flash('message')});
     }
     else{
       res.redirect('/');
@@ -269,29 +269,42 @@ app.post('/profile', function(req, res){
   const pelatihanBaru = req.body.pelatihan;
   const prestasiBaru = req.body.prestasi;
 
-  User.findById(req.user.id, function(err, foundUser){
-    if (err) {
+  User.findOne({'username': unameBaru}, (err, user) => {
+    if (err){
       console.log(err);
-    } else {
-      if (foundUser) {
-        foundUser.username = unameBaru;
-        foundUser.nama = namaBaru;
-        foundUser.npm = npmBaru;
-        foundUser.ttl = ttlBaru;
-        foundUser.tgl = tglBaru;
-        foundUser.agama = agamaBaru;
-        foundUser.goldar = goldarBaru;
-        foundUser.hp = hpBaru;
-        foundUser.email = emailBaru;
-        foundUser.rumah = rumahBaru;
-        foundUser.kos = kosBaru;
-        foundUser.pendidikan = pendidikanBaru;
-        foundUser.panitia = panitiaBaru;
-        foundUser.organisasi = organisasiBaru;
-        foundUser.pelatihan = pelatihanBaru;
-        foundUser.prestasi = prestasiBaru;
-        foundUser.save(function(){
-          res.redirect("/");
+    }
+    else {
+      if (user){
+        req.flash('message', 'username sudah digunakan, coba username lain!');
+        res.redirect('/profile');
+      }
+      else {
+        User.findById(req.user.id, function(err, foundUser){
+          if (err) {
+            console.log(err);
+          } else {
+            if (foundUser) {
+              foundUser.username = unameBaru;
+              foundUser.nama = namaBaru;
+              foundUser.npm = npmBaru;
+              foundUser.ttl = ttlBaru;
+              foundUser.tgl = tglBaru;
+              foundUser.agama = agamaBaru;
+              foundUser.goldar = goldarBaru;
+              foundUser.hp = hpBaru;
+              foundUser.email = emailBaru;
+              foundUser.rumah = rumahBaru;
+              foundUser.kos = kosBaru;
+              foundUser.pendidikan = pendidikanBaru;
+              foundUser.panitia = panitiaBaru;
+              foundUser.organisasi = organisasiBaru;
+              foundUser.pelatihan = pelatihanBaru;
+              foundUser.prestasi = prestasiBaru;
+              foundUser.save(function(){
+                res.redirect("/");
+              });
+            }
+          }
         });
       }
     }
