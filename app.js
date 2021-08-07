@@ -72,7 +72,7 @@ app.get('/login', function(req, res){
 });
 
 app.get('/signup', function(req, res){
-  res.render('signup');
+  res.render('signup', {message: req.flash('message')});
 });
 
 app.get('/form', function(req, res){
@@ -151,18 +151,32 @@ app.get('/profile', function(req, res){
 });
 
 app.post('/signup', function(req, res){
-  User.register({username: req.body.username}, req.body.password, function(err, user){
-    if(err){
+  const username = req.body.username;
+  User.findOne({'username': username}, (err, user) => {
+    if (err){
       console.log(err);
-      res.redirect('/signup');
     }
-    else{
-      passport.authenticate('local', {failureFlash: true, failureRedirect: '/signup'})(req, res, function(){
-        res.redirect('/');
-      });
+    else {
+      if (user){
+        req.flash('message', 'Username sudah digunakan! Coba username lain.');
+        res.redirect('/signup');
+      }
+      else {
+        User.register({username: req.body.username}, req.body.password, function(err, user){
+          if(err){
+            console.log(err);
+            res.redirect('/signup');
+          }
+          else{
+            passport.authenticate('local', {failureFlash: true, failureRedirect: '/signup'})(req, res, function(){
+              res.redirect('/');
+            });
+          }
+        });
+      }
     }
   });
-})
+});
 
 app.post('/login', function(req, res){
   const user = new User({
